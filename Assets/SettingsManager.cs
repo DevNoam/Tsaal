@@ -7,12 +7,14 @@ public class SettingsManager : MonoBehaviour
     private Image Volume;
     [SerializeField]
     private Sprite[] VolumeSprites;
+    public AudioSource Audio;
 
     void Start()
     {
         if (PlayerPrefs.GetInt("isMuted") == 1) //Is Muted
         {
             Volume.sprite = VolumeSprites[1];
+            Audio.mute = true;
         }
         else //Not Muted
         {
@@ -26,10 +28,12 @@ public class SettingsManager : MonoBehaviour
         {
             PlayerPrefs.SetInt("isMuted", 0);
             Volume.sprite = VolumeSprites[0]; //Don't mute
+            Audio.mute = false;
         }
         else //Not muted
         {
             PlayerPrefs.SetInt("isMuted", 1); //Mute
+            Audio.mute = true;
             Volume.sprite = VolumeSprites[1];
         }
     }

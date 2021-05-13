@@ -11,8 +11,11 @@ public class MapManager : MonoBehaviour
     public Color BeatenLevelColor;
     public Animator Animation;
     public Animator Animation2;
+    public AudioSource Audio;
     void Start()
     {
+        if (PlayerPrefs.GetInt("isMuted") == 1)
+            Audio.mute = true;
         PlayerPrefs.SetInt("Level1", 1);
         for (int i = 0; i < LevelsSelector.Length + 1; i++)
         {
@@ -20,12 +23,14 @@ public class MapManager : MonoBehaviour
             {
                 Debug.Log("Level" + (i + 1) + " Unlocked");
                 LevelsSelector[i].GetComponent<Button>().interactable = true;
+                LevelsSelector[i].transform.Find($"Arrows{i + 1}/ArrowsContainer").transform.gameObject.SetActive(true);
 
                 var colors = LevelsSelector[i].GetComponent<Button>().colors;
                 colors.normalColor = BeatenLevelColor;
                 LevelsSelector[i].GetComponent<Button>().colors = colors;
 
                 LevelsSelector[i].GetComponentInChildren<TMP_Text>().text = (i + 1).ToString();
+                
             }
             else
             {

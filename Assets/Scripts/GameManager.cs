@@ -31,9 +31,12 @@ public class GameManager : MonoBehaviour
     public string[] deathReasonsTime;
     public string[] winningSentences;
 
+    public AudioSource Audio;
 
     private void Start()
     {
+        if (PlayerPrefs.GetInt("isMuted") == 1)
+            Audio.mute = true;
         TimerText.text = Timer.ToString();
         if (Timer == 0)
         {
