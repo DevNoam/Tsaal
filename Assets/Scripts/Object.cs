@@ -5,26 +5,11 @@ public class Object : MonoBehaviour
     public Rigidbody2D rb;
     public int tile;
     public GameObject particle;
-
+    private AudioManager audioManager;
     void Start()
     {
-         int rndColor = Random.Range(0, 3);
-        /*
-        if (rndColor == 0)
-        {
-            this.gameObject.GetComponent<SpriteRenderer>().color = Color.red;
-            this.gameObject.tag = "Container1";
-        }
-        else if (rndColor == 1)
-        {
-            this.gameObject.GetComponent<SpriteRenderer>().color = Color.yellow;
-            this.gameObject.tag = "Container2";
-        }
-        else if (rndColor == 2)
-        {
-            this.gameObject.GetComponent<SpriteRenderer>().color = Color.green;
-            this.gameObject.tag = "Container3";
-        }*/
+        audioManager = GameObject.Find("/AudioManager").GetComponent<AudioManager>();
+        int rndColor = Random.Range(0, 3);
     }
 
     Vector2 firstPressPos;
@@ -64,11 +49,13 @@ public class Object : MonoBehaviour
                         }
                         else if (tile == 1)
                         {
+                            audioManager.Play("Swipe");
                             rb.MovePosition(new Vector2(-1.81f, transform.position.y));
                             tile = 0;
                         }
                         else if (tile == 2)
                         {
+                            audioManager.Play("Swipe");
                             rb.MovePosition(new Vector2(0, transform.position.y));
                             tile = 1;
                         }
@@ -78,12 +65,14 @@ public class Object : MonoBehaviour
                         Debug.Log("Right");
                         if (tile == 0)
                         {
+                            audioManager.Play("Swipe");
                             rb.MovePosition(new Vector2(0, transform.position.y));
                             tile = 1;
                         }
                         else if (tile == 1)
                         {
-                            rb.MovePosition(new Vector2(1.81f, transform.position.y));
+                            audioManager.Play("Swipe");
+                                rb.MovePosition(new Vector2(1.81f, transform.position.y));
                             tile = 2;
                         }
                         else if (tile == 2)
@@ -96,7 +85,7 @@ public class Object : MonoBehaviour
                 {
                     if (currentSwipe.y < 0)
                     {
-                        Debug.Log("down");
+                        audioManager.Play("Down");
                         rb.gravityScale = 20;
                     }
                     else
@@ -104,6 +93,8 @@ public class Object : MonoBehaviour
                         //Swipe Up
                     }
                 }
+                //Swiping Audio
+
             }
         }
 #if UNITY_EDITOR || UNITY_STANDALONE
@@ -116,11 +107,13 @@ public class Object : MonoBehaviour
             }
             else if (tile == 1)
             {
+                audioManager.Play("Swipe");
                 rb.MovePosition(new Vector2(-1.81f, transform.position.y));
                 tile = 0;
             }
             else if (tile == 2)
             {
+                audioManager.Play("Swipe");
                 rb.MovePosition(new Vector2(0, transform.position.y));
                 tile = 1;
             }
@@ -130,11 +123,13 @@ public class Object : MonoBehaviour
             movingTile = true;
             if (tile == 0)
             {
+                audioManager.Play("Swipe");
                 rb.MovePosition(new Vector2(0, transform.position.y));
                 tile = 1;
             }
             else if (tile == 1)
             {
+                audioManager.Play("Swipe");
                 rb.MovePosition(new Vector2(1.81f, transform.position.y));
                 tile = 2;
             }
@@ -145,6 +140,7 @@ public class Object : MonoBehaviour
         }
         else if (Input.GetKeyDown(KeyCode.DownArrow) && movingTile == false)
         {
+            audioManager.Play("Down");
             movingTile = true;
             rb.gravityScale = 20;
         }
@@ -160,13 +156,19 @@ public class Object : MonoBehaviour
         GameManager gm = GameObject.Find("GameManager").GetComponent<GameManager>();
         if (collision.gameObject.tag == this.gameObject.tag)
         {
-            print("Correct location");
             gm.addScore(1);
             Destroy(this.gameObject);
         }
         else if (collision.gameObject.tag != this.gameObject.tag && collision.gameObject.tag.ToString().Contains("Container"))
         {
-            print("Wrong location!");
+            try
+            {
+            audioManager.Play("WrongLocation");
+
+            }
+            catch (System.Exception)
+            {
+            }
             gm.HealthChange(-1);
             Instantiate(particle, new Vector3(this.transform.position.x, this.transform.position.y, 0), Quaternion.identity);
             Destroy(this.gameObject);

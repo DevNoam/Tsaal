@@ -654,7 +654,6 @@ MonoBehaviour:
   - "\u05E8\u05E0\u05D9\u05D5\u05D5 \u05D4\u05D6\u05D9\u05D0"
   - "?\u05E8\u05D4\u05DE \u05DA\u05DB \u05DC\u05DB \u05EA\u05DE\u05D9\u05D9\u05E1
     \u05DA\u05D9\u05D0"
-  Audio: {fileID: 916330717}
 --- !u!4 &267491829
 Transform:
   m_ObjectHideFlags: 0
@@ -1790,7 +1789,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 315, y: 279.00006}
+  m_AnchoredPosition: {x: 315, y: 407}
   m_SizeDelta: {x: 846.13354, y: 846.13354}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &857580578
@@ -3661,7 +3660,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 315, y: 279}
+  m_AnchoredPosition: {x: 315, y: 407}
   m_SizeDelta: {x: 846.13354, y: 846.13354}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1557627652

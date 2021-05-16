@@ -9,7 +9,7 @@
     <ProductVersion>10.0.20506</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
     <RootNamespace></RootNamespace>
-    <ProjectGuid>{C858C78A-6BDB-E5BA-43C5-0AE54EFC4A8D}</ProjectGuid>
+    <ProjectGuid>{232195F1-C213-7C52-19A1-67C9845E466E}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <AssemblyName>Assembly-CSharp</AssemblyName>
@@ -57,23 +57,29 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Assets\Scripts\PlusHP.cs" />
+    <Compile Include="Assets\Scripts\AudioManager.cs" />
     <Compile Include="Assets\Scripts\GameOver.cs" />
+    <Compile Include="Assets\Scripts\Sound.cs" />
     <Compile Include="Assets\Scripts\Bomb.cs" />
-    <Compile Include="Assets\SettingsManager.cs" />
+    <Compile Include="Assets\Scripts\SettingsManager.cs" />
     <Compile Include="Assets\Scripts\GameManager.cs" />
     <Compile Include="Assets\Scripts\Object.cs" />
     <Compile Include="Assets\Scripts\MainMenuManager.cs" />
-    <Compile Include="Assets\Start.cs" />
-    <Compile Include="Assets\autoDestroy.cs" />
+    <Compile Include="Assets\Scripts\Start.cs" />
+    <Compile Include="Assets\Scripts\autoDestroy.cs" />
     <Compile Include="Assets\Scripts\LevelCompleted.cs" />
     <Compile Include="Assets\Scripts\MapManager.cs" />
+    <Compile Include="Assets\Scripts\Leaderboard\GetLeaderboardData.cs" />
+    <Compile Include="Assets\Scripts\Leaderboard\UploadData.cs" />
+    <Compile Include="Assets\Scripts\Leaderboard\DeleteID.cs" />
+    <Compile Include="Assets\Scripts\hebrewCheck.cs" />
   </ItemGroup>
   <ItemGroup>
      <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />
      <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF-Mobile Overlay.shader" />
      <None Include="Assets\TextMesh Pro\Shaders\TMP_Bitmap.shader" />
      <None Include="Assets\TextMesh Pro\Shaders\TMPro_Mobile.cginc" />
-     <None Include="Assets\Fonts\_ubik\README.txt" />
+     <None Include="Assets\TextMesh Pro\Fonts\_ubik\README.txt" />
      <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF SSD.shader" />
      <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF-Surface-Mobile.shader" />
      <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF-Surface.shader" />
@@ -85,7 +91,7 @@
      <None Include="Assets\TextMesh Pro\Shaders\TMPro_Properties.cginc" />
      <None Include="Assets\TextMesh Pro\Shaders\TMPro_Surface.cginc" />
      <None Include="Assets\TextMesh Pro\Resources\LineBreaking Following Characters.txt" />
-     <None Include="Assets\Fonts\_ubik\OFL.txt" />
+     <None Include="Assets\TextMesh Pro\Fonts\_ubik\OFL.txt" />
      <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF-Mobile Masking.shader" />
      <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF Overlay.shader" />
      <None Include="Assets\TextMesh Pro\Shaders\TMP_Bitmap-Mobile.shader" />

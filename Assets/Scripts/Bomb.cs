@@ -16,19 +16,23 @@ public class Bomb : MonoBehaviour
     bool destroied = false;
     [Header("Reasons")]
     public string[] explodedSentense;
+    private AudioManager audioManager;
+
 
     private void Start()
     {
         gm = GameObject.Find("GameManager").GetComponent<GameManager>();
+        audioManager = GameObject.Find("/AudioManager").GetComponent<AudioManager>();
     }
     void Update()
     {
         Swipe();
     }
-    /*private void OnMouseDown()
+    private void OnMouseDown()
     {
         if (destroied == false)
         {
+            audioManager.Play("BombOutSide");
             destroied = true;
             //Animation Instantiation;
             gm.Spawn();
@@ -37,7 +41,7 @@ public class Bomb : MonoBehaviour
         }
         else if (destroied == true)
             return;
-    }*/
+    }
 
     private bool movingTile = false;
     public void Swipe()
@@ -66,17 +70,21 @@ public class Bomb : MonoBehaviour
                         {
                             if (tile == 0)
                             {
+                                audioManager.Play("ExitArea");
+                                audioManager.Play("BombOutSide");
                                 rb.MovePosition(new Vector2(-5f, transform.position.y));
                                 gm.Spawn();
                                 Destroy(this.gameObject);
                             }
                             else if (tile == 1)
                             {
+                                audioManager.Play("Swipe");
                                 rb.MovePosition(new Vector2(-1.81f, transform.position.y));
                                 tile = 0;
                             }
                             else if (tile == 2)
                             {
+                                audioManager.Play("Swipe");
                                 rb.MovePosition(new Vector2(0, transform.position.y));
                                 tile = 1;
                             }
@@ -86,16 +94,20 @@ public class Bomb : MonoBehaviour
                             Debug.Log("Right");
                             if (tile == 0)
                             {
+                                audioManager.Play("Swipe");
                                 rb.MovePosition(new Vector2(0, transform.position.y));
                                 tile = 1;
                             }
                             else if (tile == 1)
                             {
+                                audioManager.Play("Swipe");
                                 rb.MovePosition(new Vector2(1.81f, transform.position.y));
                                 tile = 2;
                             }
                             else if (tile == 2)
                             {
+                                audioManager.Play("ExitArea");
+                                audioManager.Play("BombOutSide");
                                 rb.MovePosition(new Vector2(5f, transform.position.y));
                                 gm.Spawn();
                                 Destroy(this.gameObject);
@@ -106,15 +118,18 @@ public class Bomb : MonoBehaviour
                     {
                         if (currentSwipe.y > 0)
                         {
+                            return;
+                            /*
                             movingTile = true;
                             destroied = true;
                             //Animation Instantiation;
                             Instantiate(particle, new Vector3(this.transform.position.x, this.transform.position.y, 0), Quaternion.identity);
                             gm.Spawn();
-                            Destroy(this.gameObject);
+                            Destroy(this.gameObject); */
                         }
                         else
                         {
+                            audioManager.Play("BombFall");
                             Debug.Log("down");
                             rb.gravityScale = 20;
                         }
@@ -127,17 +142,21 @@ public class Bomb : MonoBehaviour
                 movingTile = true;
                 if (tile == 0)
                 {
+                    audioManager.Play("ExitArea");
+                    audioManager.Play("BombOutSide");
                     rb.MovePosition(new Vector2(-5f, transform.position.y));
                     gm.Spawn();
                     Destroy(this.gameObject);
                 }
                 else if (tile == 1)
                 {
+                    audioManager.Play("Swipe");
                     rb.MovePosition(new Vector2(-1.81f, transform.position.y));
                     tile = 0;
                 }
                 else if (tile == 2)
                 {
+                    audioManager.Play("Swipe");
                     rb.MovePosition(new Vector2(0, transform.position.y));
                     tile = 1;
                 }
@@ -148,16 +167,20 @@ public class Bomb : MonoBehaviour
                 Debug.Log("Right");
                 if (tile == 0)
                 {
+                    audioManager.Play("Swipe");
                     rb.MovePosition(new Vector2(0, transform.position.y));
                     tile = 1;
                 }
                 else if (tile == 1)
                 {
+                    audioManager.Play("Swipe");
                     rb.MovePosition(new Vector2(1.81f, transform.position.y));
                     tile = 2;
                 }
                 else if (tile == 2)
                 {
+                    audioManager.Play("ExitArea");
+                    audioManager.Play("BombOutSide");
                     rb.MovePosition(new Vector2(5f, transform.position.y));
                     gm.Spawn();
                     Destroy(this.gameObject);
@@ -165,11 +188,13 @@ public class Bomb : MonoBehaviour
             }
             else if (Input.GetKeyDown(KeyCode.DownArrow) && movingTile == false)
             {
+                audioManager.Play("BombFall");
                 movingTile = true;
                 rb.gravityScale = 20;
             }
-            else if (Input.GetKeyDown(KeyCode.Space) || Input.GetKeyDown(KeyCode.UpArrow) && movingTile == false)
+            else if (Input.GetKeyDown(KeyCode.Space) /*|| Input.GetKeyDown(KeyCode.UpArrow)*/ && movingTile == false)
             {
+                audioManager.Play("Bombed");
                 movingTile = true;
                 destroied = true;
                 //Animation Instantiation;
@@ -189,6 +214,14 @@ public class Bomb : MonoBehaviour
     {
         if (collision.gameObject.tag != this.gameObject.tag && collision.gameObject.tag.ToString().Contains("Container"))
         {
+            try
+            {
+            audioManager.Play("Bombed");
+
+            }
+            catch (System.Exception)
+            {
+            }
             print("Game is over!");
             gm.HealthChange(HPtoRemove);
             if(gm.HP <= 0)
