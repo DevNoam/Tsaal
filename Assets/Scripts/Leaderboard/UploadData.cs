@@ -5,8 +5,8 @@ using UnityEngine.Networking;
 public class UploadData : MonoBehaviour
 {
     private string encrpytUploadKey = "FuckHamas";
-    public string addScoreScript = "http://localhost/TsaalDB/uploadScore.php?"; //be sure to add a ? to your url
-    public string editScoreScript = "http://localhost/TsaalDB/editID.php?";
+    public string addScoreScript = "http://moominrewritten.000webhostapp.com/TsaalPHP/uploadScore.php?"; //be sure to add a ? to your url
+    public string editScoreScript = "http://moominrewritten.000webhostapp.com/TsaalPHP/editID.php?";
     public GetLeaderboardData leaderboardGet;
     private int openID = 0;
     private void Start()

@@ -58,24 +58,21 @@ public class GameOver : MonoBehaviour
                 PlayerPrefs.SetInt("HighScore", Score);
                 HighScore = Score;
             }
-        }
-        
-        //Applying data:
-        ScoreText.text = Score.ToString();
-        if (infinite == true)
-        {
+
             HighScoreText.text = $"/ {PlayerPrefs.GetInt("HighScore")}";
             if (Score >= PlayerPrefs.GetInt("HighScore"))
                 reason = "!שדח גשיה";
+
+            if (isUploadingData == false)
+                Leaderboard.RequestLeaderboard(LeaderboardID);
         }
         else
             HighScoreText.text = $"/ {requiredForBeaten}";
-        
+        //Applying data:
+        ScoreText.text = Score.ToString();
+
         if(reason.Length >= 1)
             reasonToDeath.text = reason;
-
-        if(isUploadingData == false)
-            Leaderboard.RequestLeaderboard(LeaderboardID);
         Panel.SetActive(true);
     }
     private void Upload()

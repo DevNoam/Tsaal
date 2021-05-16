@@ -7,7 +7,7 @@ using UnityEngine.UI;
 
 public class GetLeaderboardData : MonoBehaviour
 {
-    public string GetLeaderScript = "http://localhost/TsaalDB/getData.php?";
+    public string GetLeaderScript = "http://moominrewritten.000webhostapp.com/TsaalPHP/getData.php?";
     public GameObject ContentContainer;
     public GameObject PrefabContainer;
     private string[] alef = new string[] { "א", "ב", "ג", "ד", "ה", "ו", "ז", "ח", "ט", "י", "כ", "ל", "מ", "נ", "ס", "ע", "פ", "צ", "ק", "ר", "ש", "ת" };

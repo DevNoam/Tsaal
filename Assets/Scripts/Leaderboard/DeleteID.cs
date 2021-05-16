@@ -6,15 +6,12 @@ using UnityEngine.Networking;
 public class DeleteID : MonoBehaviour
 {
     private string encrpytUploadKey = "FuckHamas";
-    public string delScript = "http://localhost/TsaalDB/delID.php?";
-    public string[] tablesList = new string[] {"infinitelevel", "level1", "level2", "level3", "level5"};
+    public string delScript = "http://moominrewritten.000webhostapp.com/TsaalPHP/delID.php?";
+    public string tablesList = "infinitelevel";
 
     public void RequestDeleteID()
     {
-        for (int i = 0; i < tablesList.Length; i++)
-        {
-            StartCoroutine(DeleteIDEnum(PlayerPrefs.GetString("PlayerName"), PlayerPrefs.GetInt("openID"), tablesList[i].ToString()));
-        }
+        StartCoroutine(DeleteIDEnum(PlayerPrefs.GetString("PlayerName"), PlayerPrefs.GetInt("openID"), tablesList));
     }
 
     private IEnumerator DeleteIDEnum(string name, int openID ,string table)
