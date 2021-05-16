@@ -24,22 +24,22 @@ public class GetLeaderboardData : MonoBehaviour
     }
     private IEnumerator GetScores(string table)
     {
-
-        UnityWebRequest www = UnityWebRequest.Get(GetLeaderScript + $"table={table}&orderBy={getDataSortedas}");
-        www.downloadHandler = new DownloadHandlerBuffer();
-        yield return www.SendWebRequest();
-
-        if (www.isNetworkError)
+        using (UnityWebRequest webRequest = UnityWebRequest.Get(GetLeaderScript + $"table={table}&orderBy={getDataSortedas}"))
         {
-            Debug.Log(www.error);
-            ErrorLoadingLeader();
-        }
-        else
-        {
-            if (www.downloadHandler.text == "No results")
-                NoResults();
+            yield return webRequest.SendWebRequest();
+
+            if (webRequest.isNetworkError)
+            {
+                Debug.Log(webRequest.error);
+                ErrorLoadingLeader();
+            }
             else
-                CreateLeaderView(www.downloadHandler.text);
+            {
+                if (webRequest.downloadHandler.text == "No results")
+                    NoResults();
+                else
+                    CreateLeaderView(webRequest.downloadHandler.text);
+            }
         }
     }
 

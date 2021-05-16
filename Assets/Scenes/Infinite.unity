@@ -2261,7 +2261,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3762f56d6e922b9409eb4192eb13d2de, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  GetLeaderScript: http://moominrewritten.000webhostapp.com/TsaalPHP/getData.php?
+  GetLeaderScript: https://moominrewritten.000webhostapp.com/TsaalPHP/getData.php?
   ContentContainer: {fileID: 2147408329}
   PrefabContainer: {fileID: 4028527538418102000, guid: 49976bf961be97747aa4280b74738c8d, type: 3}
   getDataSortedas: score
@@ -2280,8 +2280,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7228783da78cc4c42b8f40fa32bc882a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  addScoreScript: http://moominrewritten.000webhostapp.com/TsaalPHP/uploadScore.php?
-  editScoreScript: http://moominrewritten.000webhostapp.com/TsaalPHP/editID.php?
+  addScoreScript: https://moominrewritten.000webhostapp.com/TsaalPHP/uploadScore.php?
+  editScoreScript: https://moominrewritten.000webhostapp.com/TsaalPHP/editID.php?
   leaderboardGet: {fileID: 622483550}
 --- !u!1 &667046773
 GameObject:
