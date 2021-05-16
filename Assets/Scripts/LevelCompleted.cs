@@ -10,14 +10,16 @@ public class LevelCompleted : MonoBehaviour
     GameObject Panel;
     private int Score = 0;
     private int HighScore = 0;
+    private int time;
 
     public TMP_Text ScoreText;
     public TMP_Text HighScoreText;
     public TMP_Text reasonToDeath;
     [Tooltip("Which level to unlock after completing the level? = 1/ 2/ 3/ 4/ 5")]
     public int unlockLevel;
+
     // Start is called before the first frame update
-    public void Victory(int Score, string reason)
+    public void Victory(int Score, string reason, int time)
     {
         PlayerPrefs.SetInt($"Level{unlockLevel}", 1);
         ScoreText.text = Score.ToString();
@@ -26,7 +28,6 @@ public class LevelCompleted : MonoBehaviour
             reasonToDeath.text = reason;
         Panel.SetActive(true);
     }
-
     public void Continue()
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);

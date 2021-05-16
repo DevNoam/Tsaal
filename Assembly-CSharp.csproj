@@ -56,23 +56,23 @@
     <Analyzer Include="C:\Program Files (x86)\Microsoft Visual Studio Tools for Unity\16.0\Analyzers\Microsoft.Unity.Analyzers.dll" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Assets\Scripts\Leaderboard\DeleteID.cs" />
     <Compile Include="Assets\Scripts\PlusHP.cs" />
     <Compile Include="Assets\Scripts\AudioManager.cs" />
     <Compile Include="Assets\Scripts\GameOver.cs" />
     <Compile Include="Assets\Scripts\Sound.cs" />
     <Compile Include="Assets\Scripts\Bomb.cs" />
     <Compile Include="Assets\Scripts\SettingsManager.cs" />
+    <Compile Include="Assets\Scripts\hebrewCheck.cs" />
     <Compile Include="Assets\Scripts\GameManager.cs" />
     <Compile Include="Assets\Scripts\Object.cs" />
     <Compile Include="Assets\Scripts\MainMenuManager.cs" />
     <Compile Include="Assets\Scripts\Start.cs" />
     <Compile Include="Assets\Scripts\autoDestroy.cs" />
     <Compile Include="Assets\Scripts\LevelCompleted.cs" />
-    <Compile Include="Assets\Scripts\MapManager.cs" />
-    <Compile Include="Assets\Scripts\Leaderboard\GetLeaderboardData.cs" />
     <Compile Include="Assets\Scripts\Leaderboard\UploadData.cs" />
-    <Compile Include="Assets\Scripts\Leaderboard\DeleteID.cs" />
-    <Compile Include="Assets\Scripts\hebrewCheck.cs" />
+    <Compile Include="Assets\Scripts\Leaderboard\GetLeaderboardData.cs" />
+    <Compile Include="Assets\Scripts\MapManager.cs" />
   </ItemGroup>
   <ItemGroup>
      <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />
@@ -80,6 +80,7 @@
      <None Include="Assets\TextMesh Pro\Shaders\TMP_Bitmap.shader" />
      <None Include="Assets\TextMesh Pro\Shaders\TMPro_Mobile.cginc" />
      <None Include="Assets\TextMesh Pro\Fonts\_ubik\README.txt" />
+     <None Include="Assets\PHPScripts\crossdomain.xml" />
      <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF SSD.shader" />
      <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF-Surface-Mobile.shader" />
      <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF-Surface.shader" />

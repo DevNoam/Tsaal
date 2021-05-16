@@ -10,6 +10,7 @@ public class GameOver : MonoBehaviour
     private int Score = 0;
     private int HighScore = 0;
     private int time = 0;
+    private bool isGameOver = false;
     public TMP_Text ScoreText;
     public TMP_Text HighScoreText;
     public TMP_Text reasonToDeath;
@@ -25,6 +26,11 @@ public class GameOver : MonoBehaviour
 
     public void GameOverInvoke(int Score, int requiredForBeaten, int time, string reason)
     {
+        if (isGameOver == false)
+            isGameOver = true;
+        else if (isGameOver == true)
+            return;
+
         if (infinite == true)
         {
             this.Score = Score;
@@ -32,7 +38,7 @@ public class GameOver : MonoBehaviour
             if (PlayerPrefs.HasKey("HighScore"))
             {
                 HighScore = PlayerPrefs.GetInt("HighScore");
-                if (Score > HighScore)
+                if (Score >= HighScore)
                 {
                     if (!PlayerPrefs.HasKey("PlayerName"))
                     {
@@ -45,10 +51,12 @@ public class GameOver : MonoBehaviour
             }
             else
             {
-                //Save the HighScore
+                if (PlayerPrefs.HasKey("PlayerName"))
+                {
+                    Upload();
+                }
                 PlayerPrefs.SetInt("HighScore", Score);
                 HighScore = Score;
-                Upload();
             }
         }
         
@@ -66,7 +74,6 @@ public class GameOver : MonoBehaviour
         if(reason.Length >= 1)
             reasonToDeath.text = reason;
 
-
         if(isUploadingData == false)
             Leaderboard.RequestLeaderboard(LeaderboardID);
         Panel.SetActive(true);
@@ -78,7 +85,7 @@ public class GameOver : MonoBehaviour
         string name = PlayerPrefs.GetString("PlayerName");
         if (name.Length >= 2)
         {
-            uploadManager.Upload(name, HighScore, time, LeaderboardID);
+            uploadManager.Upload(name, Score, time, LeaderboardID);
         }
 
     }

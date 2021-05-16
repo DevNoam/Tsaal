@@ -62,7 +62,6 @@ public class Object : MonoBehaviour
                     }
                     else
                     {
-                        Debug.Log("Right");
                         if (tile == 0)
                         {
                             audioManager.Play("Swipe");

@@ -37,17 +37,17 @@ public class GameManager : MonoBehaviour
         TimerText.text = Timer.ToString();
         if (Timer == 0)
         {
+            TimerText.text = "^";
             timeBased = false;
-            TimerText.gameObject.SetActive(false);
         }
         else if (Timer > 0)
             timeBased = true;
     }
     void Update()
     {
-        if (!isGameOver && canCount == true)
+        if (!isGameOver && canCount == true && timeBased == true)
         {
-            if (timeBased == true && Timer > 0)
+            if (Timer > 0)
             {
                 Timer -= Time.deltaTime;
                 TimerText.text = Mathf.RoundToInt(Timer).ToString();
@@ -56,6 +56,11 @@ public class GameManager : MonoBehaviour
             {
                 GameOver(deathReasonsTime[Random.Range(0, deathReasonsTime.Length)]);
             }
+        }
+        else if (!isGameOver && canCount == true && timeBased == false)
+        {
+            Timer += Time.deltaTime;
+            TimerText.text = Mathf.Round(Timer).ToString();
         }
     }
 
@@ -67,7 +72,7 @@ public class GameManager : MonoBehaviour
         {
             isGameOver = true;
             canCount = false;
-            levelCompleted.Victory(score, winningSentences[Random.Range(0, winningSentences.Length)]);
+            levelCompleted.Victory(score, winningSentences[Random.Range(0, winningSentences.Length)], (int)Mathf.Round(Timer));
             Debug.Log("Beated level 1");
         }
         CheckDifficulty();
@@ -125,14 +130,13 @@ public class GameManager : MonoBehaviour
         canCount = false;
         isGameOver = true;
         timeBased = false;
-        gameOver.GameOverInvoke(score, CompleteLevelIn, (int)Timer, reason);
+        gameOver.GameOverInvoke(score, CompleteLevelIn, Mathf.RoundToInt(Timer), reason);
     }
 
     [ContextMenu("Spawn")]
     public void Spawn()
     {
-        if (timeBased == true && canCount == false)
-            canCount = true;
+        canCount = true;
         if (isGameOver)
             return;
         int rndSpawn = Random.Range(0, spawners.Length);

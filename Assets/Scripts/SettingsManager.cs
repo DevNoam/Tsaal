@@ -67,7 +67,7 @@ public class SettingsManager : MonoBehaviour
     }
 
     public void editPlayerName()
-    { 
+    {
         for (int i = 0; i < alef.Length; i++)
         {
             if (playerNameText.textComponent.text.Contains(alef[i]))

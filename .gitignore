@@ -1,0 +1,4 @@
+/[Ll]ibrary/
+*.log
+.vs/Tsaal/v16/.suo
+Assembly-CSharp.csproj

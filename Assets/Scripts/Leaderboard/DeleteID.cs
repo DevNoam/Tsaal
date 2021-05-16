@@ -13,7 +13,6 @@ public class DeleteID : MonoBehaviour
     {
         for (int i = 0; i < tablesList.Length; i++)
         {
-            Debug.Log(tablesList[i].ToString());
             StartCoroutine(DeleteIDEnum(PlayerPrefs.GetString("PlayerName"), PlayerPrefs.GetInt("openID"), tablesList[i].ToString()));
         }
     }
