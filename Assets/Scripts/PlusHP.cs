@@ -18,7 +18,6 @@ public class PlusHP : MonoBehaviour
     bool destroied = false;
     private AudioManager audioManager;
 
-
     private void Start()
     {
         gm = GameObject.Find("GameManager").GetComponent<GameManager>();
@@ -75,7 +74,6 @@ public class PlusHP : MonoBehaviour
                         }
                         else
                         {
-                            Debug.Log("Right");
                             if (tile == 0)
                             {
                                 audioManager.Play("Swipe");
@@ -104,8 +102,9 @@ public class PlusHP : MonoBehaviour
                         }
                         else
                         {
+                            tile = 4;
                             audioManager.Play("Down");
-                            rb.gravityScale = 20;
+                            rb.gravityScale = 28;
                         }
                     }
                 }
@@ -157,9 +156,10 @@ public class PlusHP : MonoBehaviour
             }
             else if (Input.GetKeyDown(KeyCode.DownArrow) && movingTile == false)
             {
+                tile = 4;
                 audioManager.Play("Down");
                 movingTile = true;
-                rb.gravityScale = 20;
+                rb.gravityScale = 28;
             }
             else if (Input.GetKeyDown(KeyCode.Space) || Input.GetKeyDown(KeyCode.UpArrow) && movingTile == false)
             {

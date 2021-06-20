@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 5190395233624366010}
   - component: {fileID: 5190395233624366011}
   m_Layer: 0
-  m_Name: Object 7
+  m_Name: Object 41
   m_TagString: Container1
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -126,6 +126,7 @@ MonoBehaviour:
   rb: {fileID: 5190395233624366011}
   tile: 0
   particle: {fileID: 3270547013394741172, guid: 761b70ebdae25a6499052122701412fb, type: 3}
+  speed: 250
 --- !u!50 &5190395233624366011
 Rigidbody2D:
   serializedVersion: 4
@@ -145,5 +146,5 @@ Rigidbody2D:
   m_Material: {fileID: 0}
   m_Interpolate: 0
   m_SleepingMode: 1
-  m_CollisionDetection: 0
+  m_CollisionDetection: 1
   m_Constraints: 4

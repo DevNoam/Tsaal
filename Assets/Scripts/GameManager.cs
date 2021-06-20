@@ -155,23 +155,46 @@ public class GameManager : MonoBehaviour
         }
         int rndObj = Random.Range(0, objects.Length);
 
+        if (HP >= 4 && objects[rndObj].name.Contains("PlusHP"))
+        {
+            Spawn();
+            return;
+        }
+
         GameObject obj = Instantiate(objects[rndObj], spawners[rndSpawn].transform);
         if (obj.name.Contains("Bomb"))
             obj.GetComponent<Bomb>().tile = rndSpawn;
         else if(obj.name.Contains("Object"))
             obj.GetComponent<Object>().tile = rndSpawn;
+        else if (obj.name.Contains("PlusHP"))
+            obj.GetComponent<PlusHP>().tile = rndSpawn;
 
         if (difficulty > 1)
         {
             if (difficulty == 2)
-                obj.GetComponent<Rigidbody2D>().drag = 8;
-            else if (difficulty == 3)
                 obj.GetComponent<Rigidbody2D>().drag = 6;
-            else if (difficulty == 4)
+            else if (difficulty == 3)
                 obj.GetComponent<Rigidbody2D>().drag = 4;
+            else if (difficulty == 4)
+                obj.GetComponent<Rigidbody2D>().drag = 3;
             else if (difficulty == 5)
-                obj.GetComponent<Rigidbody2D>().drag = 2.5f;
-            else if(difficulty == 6)
+                obj.GetComponent<Rigidbody2D>().drag = 2f;
+            else if (difficulty == 6)
+                obj.GetComponent<Rigidbody2D>().drag = 0.5f;
+            else if (difficulty >= 7)
+                obj.GetComponent<Rigidbody2D>().drag = 0.5f;
+        }
+        if (obj.name.Contains("Bomb"))
+        {
+            if (difficulty == 2)
+                obj.GetComponent<Rigidbody2D>().drag = 7;
+            else if (difficulty == 3)
+                obj.GetComponent<Rigidbody2D>().drag = 5;
+            else if (difficulty == 4)
+                obj.GetComponent<Rigidbody2D>().drag = 3;
+            else if (difficulty == 5)
+                obj.GetComponent<Rigidbody2D>().drag = 2f;
+            else if (difficulty == 6)
                 obj.GetComponent<Rigidbody2D>().drag = 1;
             else if (difficulty >= 7)
                 obj.GetComponent<Rigidbody2D>().drag = 0.5f;

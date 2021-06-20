@@ -15,13 +15,9 @@ public class Object : MonoBehaviour
     Vector2 firstPressPos;
     Vector2 secondPressPos;
     Vector2 currentSwipe;
-    void Update()
-    {
-        Swipe();
-    }
 
     private bool movingTile = false;
-    public void Swipe()
+    public void Update()
     {
         if (Input.GetMouseButtonDown(0))
         {
@@ -84,8 +80,9 @@ public class Object : MonoBehaviour
                 {
                     if (currentSwipe.y < 0)
                     {
+                        tile = 4;
                         audioManager.Play("Down");
-                        rb.gravityScale = 20;
+                        rb.gravityScale = 28;
                     }
                     else
                     {
@@ -139,9 +136,10 @@ public class Object : MonoBehaviour
         }
         else if (Input.GetKeyDown(KeyCode.DownArrow) && movingTile == false)
         {
+            tile = 4;
             audioManager.Play("Down");
             movingTile = true;
-            rb.gravityScale = 20;
+            rb.gravityScale = 28;
         }
         if (Input.GetKeyUp(KeyCode.LeftArrow) || Input.GetKeyUp(KeyCode.RightArrow) && movingTile == true)
         {
@@ -163,7 +161,6 @@ public class Object : MonoBehaviour
             try
             {
             audioManager.Play("WrongLocation");
-
             }
             catch (System.Exception)
             {

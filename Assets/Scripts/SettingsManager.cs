@@ -1,6 +1,8 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using System.Linq;
+
 public class SettingsManager : MonoBehaviour
 {
     private int isMuted = 0;
@@ -11,11 +13,25 @@ public class SettingsManager : MonoBehaviour
     public AudioManager AudioManager;
     public TMP_InputField playerNameText;
     public string playerName;
+    public TMP_Text availabilityInfo;
+    public GameObject availabilityInfoWarn;
     private string[] alef = new string[] { "א", "ב", "ג", "ד", "ה", "ו", "ז", "ח", "ט", "י", "כ", "ל", "מ", "נ", "ס", "ע", "פ", "צ", "ק", "ר", "ש", "ת" };
 
 
     void Start()
     {
+#if UNITY_WEBGL
+        try
+        {
+        playerNameText.interactable = false;
+        playerNameText.text = "אפשרות זו אינה זמינה.";
+        availabilityInfo.text = "אין אפשרות להעלות שם בגירסת הדפדפן, יש להוריד את המשחק מהחנות על מנת להשתמש באופצייה הזו.";
+        availabilityInfoWarn.SetActive(false);
+        }
+        catch (System.Exception)
+        {
+        }
+        #endif
         if (PlayerPrefs.GetInt("isMuted") == 1) //Is Muted
         {
             Volume.sprite = VolumeSprites[1];
@@ -79,8 +95,6 @@ public class SettingsManager : MonoBehaviour
                 playerNameText.textComponent.GetComponent<TMP_Text>().isRightToLeftText = false;
         }
     }
-
-
     public void UpdatePlayerName(string playerName)
     {
         PlayerPrefs.SetString("PlayerName", playerName);

@@ -91,7 +91,6 @@ public class Bomb : MonoBehaviour
                         }
                         else
                         {
-                            Debug.Log("Right");
                             if (tile == 0)
                             {
                                 audioManager.Play("Swipe");
@@ -129,9 +128,10 @@ public class Bomb : MonoBehaviour
                         }
                         else
                         {
+                            tile = 4;
                             audioManager.Play("BombFall");
                             Debug.Log("down");
-                            rb.gravityScale = 20;
+                            rb.gravityScale = 28;
                         }
                     }
                 }
@@ -190,7 +190,7 @@ public class Bomb : MonoBehaviour
             {
                 audioManager.Play("BombFall");
                 movingTile = true;
-                rb.gravityScale = 20;
+                rb.gravityScale = 28;
             }
             else if (Input.GetKeyDown(KeyCode.Space) /*|| Input.GetKeyDown(KeyCode.UpArrow)*/ && movingTile == false)
             {

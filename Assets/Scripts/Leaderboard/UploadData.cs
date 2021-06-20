@@ -67,6 +67,7 @@ public class UploadData : MonoBehaviour
                 Debug.Log(download[i]);
             }
             PlayerPrefs.SetInt("openID", int.Parse(download[1]));
+            Debug.Log($"OPENID = {download[1]}");
         }
         leaderboardGet.UploadingData(false);
         leaderboardGet.RequestLeaderboard(table);

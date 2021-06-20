@@ -12,17 +12,14 @@ public class MainMenuManager : MonoBehaviour
     private void Start()
     {
         version.text = $"V: {Application.version}";
-#if UNITY_WEBGL || UNITY_ANDROID || UNITY_IOS
+#if UNITY_WEBGL
         if (Screen.fullScreen == Screen.fullScreen)
         {
             quit.SetActive(true);
         }
         else
         {
-#if UNITY_WEBGL
-            Screen.fullScreen = Screen.fullScreen;
-#endif
-            quit.SetActive(true);
+            quit.SetActive(false);
         }
 #endif
         }
@@ -42,11 +39,13 @@ public class MainMenuManager : MonoBehaviour
 
     public void quitfullscreen()
     {
-#if UNITY_WEBGL
-        Screen.fullScreen = !Screen.fullScreen;
-#endif
-#if UNITY_ANDROID || UNITY_IOS
-        Application.Quit();
-#endif
+        if (Screen.fullScreen == Screen.fullScreen)
+        {
+            Screen.fullScreen = !Screen.fullScreen;
+        }
+    }
+    public void HREF(string url)
+    {
+        Application.OpenURL(url);
     }
 }

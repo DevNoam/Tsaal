@@ -641,7 +641,7 @@ MonoBehaviour:
   score: 0
   HP: 3
   Timer: 95
-  difficulty: 9
+  difficulty: 5
   IncreaseDifficultyEvery: 6
   CompleteLevelIn: 25
   deathReasonsHP:
