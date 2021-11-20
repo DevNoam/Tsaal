@@ -136,7 +136,6 @@ public class Bomb : MonoBehaviour
                     }
                 }
             }
-#if UNITY_EDITOR || UNITY_STANDALONE
             if (Input.GetKeyDown(KeyCode.LeftArrow) && movingTile == false)
             {
                 movingTile = true;
@@ -206,7 +205,6 @@ public class Bomb : MonoBehaviour
             {
                 movingTile = false;
             }
-#endif
         }
     }
 
@@ -217,15 +215,17 @@ public class Bomb : MonoBehaviour
             try
             {
             audioManager.Play("Bombed");
-
             }
             catch (System.Exception)
             {
+                Debug.Log("");
             }
             print("Game is over!");
             gm.HealthChange(HPtoRemove);
             if(gm.HP <= 0)
                 gm.GameOver(explodedSentense[Random.Range(0, explodedSentense.Length)]);
+            else
+                gm.Spawn();
 
             Instantiate(particle, new Vector3(this.transform.position.x, this.transform.position.y, 0), Quaternion.identity);
             Destroy(this.gameObject);

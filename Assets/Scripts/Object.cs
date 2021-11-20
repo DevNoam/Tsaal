@@ -93,7 +93,6 @@ public class Object : MonoBehaviour
 
             }
         }
-#if UNITY_EDITOR || UNITY_STANDALONE
         if (Input.GetKeyDown(KeyCode.LeftArrow) && movingTile == false)
         {
             movingTile = true;
@@ -145,7 +144,6 @@ public class Object : MonoBehaviour
         {
             movingTile = false;
         }
-#endif
     }
 
     private void OnCollisionEnter2D(Collision2D collision)

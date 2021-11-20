@@ -2,6 +2,8 @@
 using UnityEngine.UI;
 using TMPro;
 using System.Linq;
+using System.Text.RegularExpressions;
+
 
 public class SettingsManager : MonoBehaviour
 {
@@ -13,14 +15,14 @@ public class SettingsManager : MonoBehaviour
     public AudioManager AudioManager;
     public TMP_InputField playerNameText;
     public string playerName;
-    public TMP_Text availabilityInfo;
-    public GameObject availabilityInfoWarn;
+    //public TMP_Text availabilityInfo;
+    //public GameObject availabilityInfoWarn;
     private string[] alef = new string[] { "א", "ב", "ג", "ד", "ה", "ו", "ז", "ח", "ט", "י", "כ", "ל", "מ", "נ", "ס", "ע", "פ", "צ", "ק", "ר", "ש", "ת" };
 
 
     void Start()
     {
-#if UNITY_WEBGL
+/*#if UNITY_WEBGL
         try
         {
         playerNameText.interactable = false;
@@ -30,8 +32,9 @@ public class SettingsManager : MonoBehaviour
         }
         catch (System.Exception)
         {
+            Debug.Log("");
         }
-        #endif
+        #endif*/
         if (PlayerPrefs.GetInt("isMuted") == 1) //Is Muted
         {
             Volume.sprite = VolumeSprites[1];
@@ -94,9 +97,11 @@ public class SettingsManager : MonoBehaviour
             else
                 playerNameText.textComponent.GetComponent<TMP_Text>().isRightToLeftText = false;
         }
+            playerNameText.text = playerNameText.text.Replace(" ", "");
     }
     public void UpdatePlayerName(string playerName)
     {
+        playerNameText.text = playerNameText.text.Replace(" ", "");
         PlayerPrefs.SetString("PlayerName", playerName);
     }
 }

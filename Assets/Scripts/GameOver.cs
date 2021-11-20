@@ -40,27 +40,27 @@ public class GameOver : MonoBehaviour
                 HighScore = PlayerPrefs.GetInt("HighScore");
                 if (Score >= HighScore)
                 {
-#if !UNITY_WEBGL
+//#if !UNITY_WEBGL
                     if (!PlayerPrefs.HasKey("PlayerName"))
                     {
                         registerReminder.SetActive(true);
                     }
-#endif
+//#endif
                     PlayerPrefs.SetInt("HighScore", Score);
                     HighScore = Score;
-#if !UNITY_WEBGL
+//#if !UNITY_WEBGL
                     Upload();
-#endif
+//#endif
                 }
             }
             else
             {
-#if !UNITY_WEBGL
+//#if !UNITY_WEBGL
                 if (PlayerPrefs.HasKey("PlayerName"))
                 {
                     Upload();
                 }
-#endif
+//#endif
                 PlayerPrefs.SetInt("HighScore", Score);
                 HighScore = Score;
             }
@@ -81,7 +81,7 @@ public class GameOver : MonoBehaviour
             reasonToDeath.text = reason;
         Panel.SetActive(true);
     }
-#if !UNITY_WEBGL
+//#if !UNITY_WEBGL
     private void Upload()
     {
         isUploadingData = true;
@@ -110,7 +110,7 @@ public class GameOver : MonoBehaviour
         PlayerPrefs.SetString("PlayerName", playerName);
         Upload();
     }
-#endif
+//#endif
 
     public void ResetGame()
     {

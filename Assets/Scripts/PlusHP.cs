@@ -109,7 +109,6 @@ public class PlusHP : MonoBehaviour
                     }
                 }
             }
-#if UNITY_EDITOR || UNITY_STANDALONE
             if (Input.GetKeyDown(KeyCode.LeftArrow) && movingTile == false)
             {
                 movingTile = true;
@@ -169,7 +168,6 @@ public class PlusHP : MonoBehaviour
             {
                 movingTile = false;
             }
-#endif
         }
     }
 
